@@ -1,6 +1,7 @@
 package com.example.chainsave.common.interceptor;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.example.chainsave.common.annotation.LoginRequired;
 import com.example.chainsave.common.model.Result;
 import com.example.chainsave.common.util.HostHolder;
@@ -26,7 +27,7 @@ public class LoginRequiredInterceptor implements HandlerInterceptor {
             LoginRequired loginRequired=method.getAnnotation(LoginRequired.class);
             if(loginRequired!=null&&hostHolder.getUser()==null){
                 response.setCharacterEncoding("utf-8");
-                response.getWriter().print(JSON.toJSONString(new Result<String>().setNotLoginErrorMsgInfo("请先登录")));
+                response.getWriter().print(JSON.toJSONString(new Result<String>().setNotLoginErrorMsgInfo("请先登录"), SerializerFeature.WriteMapNullValue));
                 return false;
             }
         }
