@@ -19,6 +19,6 @@ public class FabricSDKTest {
 
     @Test
     public void testQueryFileMetadata() throws Exception {
-        System.out.println(FileMetadataService.queryFileMetadataById(5));
+        System.out.println(FileMetadataService.queryFileMetadataById(3));
     }
 }
